@@ -2,22 +2,20 @@ const { getTweet, getTweets, getComments } = require('../db/data-helpers');
 
 const request = require('supertest');
 const app = require('../lib/app');
-const Tweet = require('../lib/models/Tweets');
-const Comment = require('../lib/models/Comments');
 
 describe('tweet routes', () => {
   it('creates a tweet', () => {
     return request(app)
       .post('/api/v1/tweets')
       .send({
-        handle: 'test',
-        text: 'test 1234'
+        handle: 'politicaljunkie',
+        text: 'vote out Trump'
       })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          handle: 'test',
-          text: 'test 1234',
+          handle: 'politicaljunkie',
+          text: 'vote out Trump',
           __v: 0
         });
       });
@@ -27,12 +25,12 @@ describe('tweet routes', () => {
     return request(app)
       .post('/api/v1/tweets')
       .send({
-        handle: 'test',
+        handle: 'politicaljunkie',
       })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          handle: 'test',
+          handle: 'politicaljunkie',
           text: expect.any(String),
           __v: 0
         });
@@ -68,13 +66,12 @@ describe('tweet routes', () => {
 
     return request(app)
       .patch(`/api/v1/tweets/${tweet._id}`)
-      .send({ text: '1234 test' })
+      .send({ text: 'vote out Trump' })
       .then(res => {
         expect(res.body).toEqual({
           ...tweet,
-          text: '1234 test'
+          text: 'vote out Trump'
         });
-        // });
       });
   });
 

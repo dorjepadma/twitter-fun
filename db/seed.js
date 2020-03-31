@@ -1,5 +1,5 @@
-const Tweet = require('../lib/models/Tweets');
-const Comment = require('../lib/models/Comments');
+const Tweet = require('../lib/models/Tweet');
+const Comment = require('../lib/models/Comment');
 const chance = require('chance').Chance();
 
 

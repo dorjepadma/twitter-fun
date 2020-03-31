@@ -11,15 +11,15 @@ describe('comment routes', () => {
       .post('/api/v1/comments')
       .send({
         tweetId: tweet._id,
-        handle: 'test',
-        text: 'test 1234'
+        handle: 'politicaljunkie',
+        text: 'vote out Trump'
       })
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
           tweetId: tweet._id,
-          handle: 'test',
-          text: 'test 1234',
+          handle: 'politicaljunkie',
+          text: 'vote out Trump',
           __v: 0
         });
       });
@@ -44,11 +44,11 @@ describe('comment routes', () => {
 
     return request(app)
       .patch(`/api/v1/comments/${comment._id}`)
-      .send({ text: 'bad!' })
+      .send({ text: 'No Bueno!' })
       .then(res => {
         expect(res.body).toEqual({
           ...comment,
-          text: 'bad!'
+          text: 'No Bueno!'
         });
       });
   });
