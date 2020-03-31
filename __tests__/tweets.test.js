@@ -26,6 +26,7 @@ describe('tweet routes', () => {
       .post('/api/v1/tweets')
       .send({
         handle: 'politicaljunkie',
+        text: 'vote out Trump',
       })
       .then(res => {
         expect(res.body).toEqual({
